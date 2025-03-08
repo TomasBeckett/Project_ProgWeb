@@ -1,7 +1,5 @@
 # Project_ProgWeb
 
-Project P.ProgWeb
-
 | Student ID  | Name                               |
 |------------|------------------------------------|
 | 71230985   | Tomas Becket                      |
