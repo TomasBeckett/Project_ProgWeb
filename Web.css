@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url(Pic/Background1.jpg);
+    background-image: url(Pic/Background2.png);
     background-size: cover;
     padding: 5px 10px;
     border-bottom: 1px solid #ddd;
@@ -27,14 +27,6 @@ body {
     color: black;
 }
 
-.button {
-    background: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
 main {
     padding: 1px 20px 20px 20px;
     border-radius: 10px;
@@ -50,7 +42,7 @@ main table,main th, main td{
 }
 
 .section {
-    background-image:url(Search/Background-1.png);
+    background-image:url(Pic/Background1.jpg);
     background-repeat: no-repeat;
     background-size:cover;
 }
@@ -74,8 +66,8 @@ main table,main th, main td{
     width: 50%;
     padding: 10px;
     font-size: 16px;
-    border: none;
-    border-radius: 5px;
+    border: solid 0.1px black;
+    border-radius: 10px;
     outline: none;
 }
 
@@ -102,8 +94,8 @@ main table,main th, main td{
     width: 50%;
     padding: 12px;
     font-size: 15px;
-    border: none;
-    border-radius: 5px;
+    border: solid 0.1px black;
+    border-radius: 10px;
     outline: none;
 }
 
@@ -111,14 +103,14 @@ main table,main th, main td{
     width: 60%;
     padding: 12px;
     font-size: 15px;
-    border: none;
-    border-radius: 5px;
+    border: solid 0.1px black;
+    border-radius: 10px;
     outline: none;
 }
 
 .button {
-    background-color: #007bff;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -128,11 +120,11 @@ main table,main th, main td{
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #e1e4e9;
 }
 
 .button:active {
-    background-color: #003d80;
+    background-color: #c9cacc;
 }
 
 .modal {
@@ -238,7 +230,7 @@ main table,main th, main td{
 
 
 footer {
-    background-image: url(Search/Background-1.png);
+    background-image: url(Pic/Background2.png);
     background-size: cover;
     color: #201f1f;
     padding: 5px 0;
