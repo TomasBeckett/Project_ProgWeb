@@ -1,6 +1,8 @@
 # Project_ProgWeb
 
-| Student ID  | Name                               |
+KELOMPOK 1
+
+| NIM  | NAMA                               |
 |------------|------------------------------------|
 | 71230985   | Tomas Becket                      |
 | 71230981   | Deo Dewanto                       |
