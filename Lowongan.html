@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Web.css">
+    <title>Lowongan Pekerjaan</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                        </td>
+                        <td>
+                            Kerja
+                        </td>
+                    </tr>
+                </table>
+            </div>
+                <table class="Profile">
+                    <tr>
+                        <td>
+                            <button class="button" id="loginBtn">Login</button>
+                        </td>
+                        <td>
+                            <img src="Pic/user.png" width="50px" alt="User Profile">
+                        </td>
+                    </tr>
+                </table>    
+            </div>
+        </div>
+        
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+        
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+        
+                    <button type="submit" class="button">Masuk</button>
+                    <p>Belum punya akun? <a href="#">Registrasi</a></p>
+                </form>
+            </div>
+        </div>   
+    </header>
+    <section class="section">
+        <div class="search-section">
+            <label for="search">Cari Lowongan:</label>
+            <input type="text" id="search" placeholder="Nama Perusahaan, Lokasi, dll">
+        </div>
+        <table class="center">
+            <tr class="search-section2">
+                <td>
+                    <label for="company">Perusahaan:</label>
+                    <input type="text" id="company" placeholder="Nama Perusahaan"">
+                </td>
+                <td>
+                    <label for="category">Kategori:</label>
+                    <input type="text" id="category" placeholder="Kategori Pekerjaan">
+                </td>
+                <td>
+                    <label for="location">Lokasi:</label>
+                    <select name="location" id="location">
+                        <option value="Pilih">Pilih</option>
+                        <option value="Jakarta">Jakarta</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Surabaya">Surabaya</option>
+                        <option value="Medan">Medan</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="job-type">Jenis:</label>
+                    <select name="job-type" id="job-type">
+                        <option value="Pilih">Pilih</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="salary-range">Gaji:</label>
+                    <select name="salary-range" id="salary-range">
+                        <option value="Pilih">Pilih</option>
+                        <option value="2 Jt">2 Jt</option>
+                        <option value="4 Jt">4 Jt</option>
+                        <option value="6 Jt">6 Jt</option>
+                        <option value="8 Jt">8 Jt</option>
+                        <option value="10 Jt">10 Jt</option>
+                        <option value="15 Jt">15 Jt</option>
+                        <option value="20 Jt">20 Jt</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <main>
+        <table>
+            <tr>
+                <td class="job-listing">
+                    <img src="Pic/PTCerdas.jpg" alt="Logo Perusahaan">
+                    <div class="content">                                             
+                        <h2>Software Engineer</h2>
+                        <p><strong>Perusahaan:</strong> PT Teknologi Cerdas</p>
+                        <p><strong>Kategori:</strong> IT</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
+                        <p><strong>Gaji:</strong> Rp10.000.000 - Rp15.000.000</p>
+                        <p><strong>Lokasi:</strong> Jakarta</p>
+                        <a href="#">Lihat Detail</a>                        
+                    </div>  
+                </td>
+                <td class="job-listing">
+                    <img src="Pic/PTCenter.jpg" alt="Logo Perusahaan">
+                    <div>
+                        <h2>Data Analyst</h2>
+                        <p><strong>Perusahaan:</strong> PT Data Makmur</p>
+                        <p><strong>Kategori:</strong> Keuangan</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Remote</p>
+                        <p><strong>Gaji:</strong> Rp8.000.000 - Rp12.000.000</p>
+                        <p><strong>Lokasi:</strong> Bandung</p>
+                        <a href="#">Lihat Detail</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="job-listing">
+                    <img src="Pic/PTInovasi.jpg" alt="Logo Perusahaan">
+                    <div>
+                        <h2>UI/UX Designer</h2>
+                        <p><strong>Perusahaan:</strong> PT Inovasi Digital</p>
+                        <p><strong>Kategori:</strong> Desain</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
+                        <p><strong>Gaji:</strong> Rp7.000.000 - Rp12.000.000</p>
+                        <p><strong>Lokasi:</strong> Yogyakarta</p>
+                        <a href="#">Lihat Detail</a>
+                    </div>
+                </td>
+                <td class="job-listing">
+                    <img src="Pic/PTMarketing.jpg" alt="Logo Perusahaan">
+                    <div>
+                        <h2>Marketing Executive</h2>
+                        <p><strong>Perusahaan:</strong> PT Kreatif Marketing</p>
+                        <p><strong>Kategori:</strong> Pemasaran</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
+                        <p><strong>Gaji:</strong> Rp6.000.000 - Rp10.000.000</p>
+                        <p><strong>Lokasi:</strong> Surabaya</p>
+                        <a href="#">Lihat Detail</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="job-listing">
+                    <img src="Pic/PTAdmin.jpg" alt="Logo Perusahaan">
+                    <div>
+                        <h2>Admin Officer</h2>
+                        <p><strong>Perusahaan:</strong> PT Sejahtera Abadi</p>
+                        <p><strong>Kategori:</strong> Administrasi</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
+                        <p><strong>Gaji:</strong> Rp5.000.000 - Rp8.000.000</p>
+                        <p><strong>Lokasi:</strong> Medan</p>
+                        <a href="#">Lihat Detail</a>
+                    </div>
+                </td>
+                <td class="job-listing">
+                    <img src="Pic/PTHR.png" alt="Logo Perusahaan">
+                    <div>
+                        <h2>HR Specialist</h2>
+                        <p><strong>Perusahaan:</strong> PT Human Kapital</p>
+                        <p><strong>Kategori:</strong> Sumber Daya Manusia</p>
+                        <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
+                        <p><strong>Gaji:</strong> Rp7.500.000 - Rp12.000.000</p>
+                        <p><strong>Lokasi:</strong> Jakarta</p>
+                        <a href="#">Lihat Detail</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>Pencari Kerja</h2>
+                <p>Temukan pekerjaan impian Anda dengan mudah.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Link Cepat</h3>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Lowongan</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Kontak</h3>
+                <p>Email: support@OpenKerja.com</p>
+                <p>Telepon: +62 812-9999-9999</p>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Ikuti Kami</h3>
+                <a href="#"><i class="fab fa-facebook"></i>OpenKerja</a>
+                <a href="#"><i class="fab fa-twitter"></i>OpenKerja</a>
+                <a href="#"><i class="fab fa-instagram"></i>OpenKerja</a>
+                <a href="#"><i class="fab fa-linkedin"></i>OpenKerja</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 OpenKerja. Semua Hak Dilindungi Undang-undang.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById("loginModal");
+            var loginBtn = document.getElementById("loginBtn"); // Gunakan ID
+            var closeBtn = document.querySelector(".close");
+        
+            loginBtn.onclick = function(event) {
+                event.preventDefault(); // Mencegah link reload halaman
+                modal.style.display = "block";
+            }
+        
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+        
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
