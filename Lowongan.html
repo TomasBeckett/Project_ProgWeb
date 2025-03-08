@@ -13,10 +13,12 @@
                 <table>
                     <tr>
                         <td>
-                            <img src="Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                            <a href="http://127.0.0.1:5500/Lowongan.html#">
+                                <img src="Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                            </a>
                         </td>
                         <td>
-                            Kerja
+                            <a href="http://127.0.0.1:5500/Lowongan.html#">Kerja</a>
                         </td>
                     </tr>
                 </table>
@@ -115,7 +117,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
                         <p><strong>Gaji:</strong> Rp10.000.000 - Rp15.000.000</p>
                         <p><strong>Lokasi:</strong> Jakarta</p>
-                        <a href="#">Lihat Detail</a>                        
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>                        
                     </div>  
                 </td>
                 <td class="job-listing">
@@ -127,7 +129,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Remote</p>
                         <p><strong>Gaji:</strong> Rp8.000.000 - Rp12.000.000</p>
                         <p><strong>Lokasi:</strong> Bandung</p>
-                        <a href="#">Lihat Detail</a>
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>
                     </div>
                 </td>
             </tr>
@@ -141,7 +143,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
                         <p><strong>Gaji:</strong> Rp7.000.000 - Rp12.000.000</p>
                         <p><strong>Lokasi:</strong> Yogyakarta</p>
-                        <a href="#">Lihat Detail</a>
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>
                     </div>
                 </td>
                 <td class="job-listing">
@@ -153,7 +155,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
                         <p><strong>Gaji:</strong> Rp6.000.000 - Rp10.000.000</p>
                         <p><strong>Lokasi:</strong> Surabaya</p>
-                        <a href="#">Lihat Detail</a>
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>
                     </div>
                 </td>
             </tr>
@@ -167,7 +169,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
                         <p><strong>Gaji:</strong> Rp5.000.000 - Rp8.000.000</p>
                         <p><strong>Lokasi:</strong> Medan</p>
-                        <a href="#">Lihat Detail</a>
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>
                     </div>
                 </td>
                 <td class="job-listing">
@@ -179,7 +181,7 @@
                         <p><strong>Jenis Pekerjaan:</strong> Full-time</p>
                         <p><strong>Gaji:</strong> Rp7.500.000 - Rp12.000.000</p>
                         <p><strong>Lokasi:</strong> Jakarta</p>
-                        <a href="#">Lihat Detail</a>
+                        <a href="http://127.0.0.1:5500/Detail.html">Lihat Detail</a>
                     </div>
                 </td>
             </tr>
@@ -198,8 +200,6 @@
                 <ul>
                     <li><a href="#">Beranda</a></li>
                     <li><a href="#">Lowongan</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Kontak</a></li>
                 </ul>
             </div>
             
@@ -225,11 +225,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var modal = document.getElementById("loginModal");
-            var loginBtn = document.getElementById("loginBtn"); // Gunakan ID
+            var loginBtn = document.getElementById("loginBtn"); 
             var closeBtn = document.querySelector(".close");
         
             loginBtn.onclick = function(event) {
-                event.preventDefault(); // Mencegah link reload halaman
+                event.preventDefault(); 
                 modal.style.display = "block";
             }
         

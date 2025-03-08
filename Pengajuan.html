@@ -13,10 +13,12 @@
                 <table>
                     <tr>
                         <td>
-                            <img src="Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                            <a href="http://127.0.0.1:5500/Lowongan.html#">
+                                <img src="Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                            </a>
                         </td>
                         <td>
-                            Kerja
+                            <a href="http://127.0.0.1:5500/Lowongan.html#" style="text-decoration: none;">Kerja</a>
                         </td>
                     </tr>
                 </table>
@@ -68,8 +70,6 @@
                 <ul>
                     <li><a href="#">Beranda</a></li>
                     <li><a href="#">Lowongan</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Kontak</a></li>
                 </ul>
             </div>
             
@@ -91,5 +91,28 @@
             <p>&copy; 2024 OpenKerja. Semua Hak Dilindungi Undang-undang.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var modal = document.getElementById("loginModal");
+            var loginBtn = document.getElementById("loginBtn"); 
+            var closeBtn = document.querySelector(".close");
+        
+            loginBtn.onclick = function(event) {
+                event.preventDefault(); 
+                modal.style.display = "block";
+            }
+        
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+        
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 </html>
