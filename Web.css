@@ -6,13 +6,19 @@ body {
 }
 
 .header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url(Pic/Background2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
+    padding: 5px 1px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url(Pic/Background2.png);
-    background-size: cover;
-    padding: 5px 10px;
-    border-bottom: 1px solid #ddd;
 }
 
 .header .logo {
@@ -30,8 +36,9 @@ body {
 main {
     padding: 1px 20px 20px 20px;
     border-radius: 10px;
-    margin-left: 20%;
+    margin-left: 0%;
     margin-right: 20%;
+    padding-top: 80x;
 }
 
 main h2 {
@@ -51,6 +58,7 @@ main table,main th, main td{
 }
 
 .section {
+    margin-top: 70px;
     background-image:url(Pic/Background1.jpg);
     background-repeat: no-repeat;
     background-size:cover;
@@ -142,6 +150,76 @@ select:hover {
     border-color: black
 }
 
+.content-wrapper {
+    display: flex;
+    gap: 150px; 
+    min-height: 100vh; 
+}
+
+.sidebar {
+    position: sticky;
+    top: 71px;
+    width: 250px;
+    height: 100vh; 
+    background: #ffffff; 
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-content {
+    flex-grow: 1;
+    overflow-y: auto; 
+    max-height: calc(100vh - 40px);
+}
+
+.sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.sidebar label {
+    padding-top: 5px;
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.sidebar select {
+    width: 100%;
+    height: 11%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.sidebar input {
+    width: 92%;
+    height: 6%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.filter-btn {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 11px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background: #0056b3;
+}
+
 .button {
     background-color: white;
     color: black;
@@ -216,6 +294,9 @@ select:hover {
     cursor: pointer;
 }
 
+.job-list {
+    flex: 1; 
+}
 
 .job-listing {
     min-width: 45%;
@@ -223,7 +304,7 @@ select:hover {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
     align-items: center;
     gap: 15px;
     width: 50%; 
@@ -271,6 +352,7 @@ footer {
     background-size: cover;
     color: #201f1f;
     padding: 5px 0;
+    width: 100%;
 }
 .footer-container {
     display: flex;
