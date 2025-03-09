@@ -34,13 +34,21 @@ main {
     margin-right: 20%;
 }
 
+main h2 {
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+main h2:hover {
+    color: #007bff;
+}
+
 main table,main th, main td{
     border-spacing: 25px;
     width: 100%; 
     border-collapse: separate;
     border-color: 2px solid black;
 }
-
 
 .section {
     background-image:url(Pic/Background1.jpg);
@@ -67,8 +75,8 @@ main table,main th, main td{
     width: 50%;
     padding: 10px;
     font-size: 16px;
-    border: solid 0.1px black;
-    border-radius: 10px;
+    border: solid 0.1px rgb(211, 211, 211);
+    border-radius: 20px;
     outline: none;
 }
 
@@ -95,8 +103,8 @@ main table,main th, main td{
     width: 50%;
     padding: 12px;
     font-size: 15px;
-    border: solid 0.1px black;
-    border-radius: 10px;
+    border: solid 0.1px rgb(211, 211, 211);
+    border-radius: 20px;
     outline: none;
 }
 
@@ -104,9 +112,34 @@ main table,main th, main td{
     width: 60%;
     padding: 12px;
     font-size: 15px;
-    border: solid 0.1px black;
-    border-radius: 10px;
+    border: solid 0.1px rgb(211, 211, 211);
+    border-radius: 20px;
     outline: none;
+}
+
+input {
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+select {
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+input:hover {
+    border-color: black;
+    background-color: #f8f8f8;
+}
+
+
+select:hover {
+    background-color: #f8f8f8;
+    border-color: black
 }
 
 .button {
@@ -142,7 +175,7 @@ main table,main th, main td{
     background: white;
     padding: 20px;
     border-radius: 8px;
-    width: 30%;
+    width: 22%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -158,15 +191,16 @@ main table,main th, main td{
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 .modal-content .button {
-    width: 100%;
-    padding: 10px;
+    width: 50%;
+    margin-top: 3%;
+    padding: 12px;
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
