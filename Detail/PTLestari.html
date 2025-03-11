@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Web.css">
+    <link rel="stylesheet" href="Detail.css">
     <title>Detail Lowongan</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
                     <tr>
                         <td>
                             <a href="http://127.0.0.1:5500/Lowongan.html#">
-                                <img src="/Pic/OPEN.png" width="150px" alt="Logo Lowongan">
+                                <img src="/Pic/Other/OPEN.png" width="150px" alt="Logo Lowongan">
                             </a>
                         </td>
                         <td>
@@ -28,9 +28,6 @@
                         <td>
                             <button class="button" id="loginBtn">Login</button>
                         </td>
-                        <td>
-                            <img src="/Pic/user.png" width="50px" alt="User Profile">
-                        </td>
                     </tr>
                 </table>    
             </div>
@@ -41,21 +38,49 @@
                 <span class="close">&times;</span>
                 <h2>Login</h2>
                 <form>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-        
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="text" id="username" name="username" placeholder="Username">
+                    <input type="password" id="password" name="password" placeholder="Password">
         
                     <button type="submit" class="button">Masuk</button>
                     <p>Belum punya akun? <a href="#">Registrasi</a></p>
                 </form>
             </div>
-        </div>
+        </div>  
     </header>
 
-    <main>
-        
+    <main class="container">
+        <div class="container">
+            <div class="left-column">
+                <a href="/Lowongan.html" class="back-button">← Kembali ke Lowongan</a>
+
+                <img src="/Pic/BannerPT/PTLestari.jpg" alt="Banner" class="banner">
+                <img src="/Pic/LogoPT/PTLestari.jpg" alt="Logo Perusahaan" class="logo">
+                <div class="job-title">IT WEB PROGRAMMER</div>
+                <div class="company-name">PT Sumber Indah Lestari (DAN+DAN)</div>
+                <p>📍 Tangerang, Banten</p>
+                <p>💻 Developer/Programmer (Teknologi Informasi & Komunikasi)</p>
+                <p>⏳ Full time</p>
+                <p>💰 Rp10.000.000 - Rp15.000.000</p>
+                <div class="buttons">
+                    <button class="apply-btn"><a href="/Pengajuan/PTLestari.html">Buat Lamaran</a></button>
+                </div>
+            </div>
+            <div class="right-column">
+                <h2>Deskripsi Pekerjaan</h2>
+                <p>- Pendidikan minimal Sarjana jurusan Sistem Informasi</p>
+                <p>- Pengalaman minimal 1-2 tahun di bidang yang relevan</p>
+                <p>- Menguasai pemrograman PHP dengan framework (CI, Laravel), RDBMS (MySQL)</p>
+                <p>- Keterampilan dalam HTML, JavaScript, dan CSS</p>
+                <p>- Mampu menganalisa sistem dan menangani troubleshooting</p>
+                <h2>Pertanyaan dari Perusahaan</h2>
+                <p>- Berapa gaji bulanan yang diharapkan?</p>
+                <p>- Kualifikasi apa yang Anda miliki?</p>
+                <p>- Berapa tahun pengalaman Anda sebagai programmer?</p>
+                <p>- Bahasa pemrograman apa yang Anda kuasai?</p>
+                <p>- Berapa tahun pengalaman Anda menggunakan SQL?</p>
+                <p>- Berapa lama masa pemberitahuan ke atasan saat resign?</p>
+            </div>
+        </div>
     </main>
     
     <footer>
@@ -68,8 +93,8 @@
             <div class="footer-links">
                 <h3>Link Cepat</h3>
                 <ul>
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#">Lowongan</a></li>
+                    <li><a href="http://127.0.0.1:5500/Lowongan.html">Beranda</a></li>
+                    <li><a href="http://127.0.0.1:5500/Lowongan.html">Lowongan</a></li>
                 </ul>
             </div>
             
