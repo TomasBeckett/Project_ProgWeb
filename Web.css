@@ -9,6 +9,7 @@ body {
     position: fixed; 
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     background-image: url(Pic/Background2.png);
     background-repeat: no-repeat;
@@ -34,11 +35,10 @@ body {
 }
 
 main {
-    padding: 1px 20px 20px 20px;
     border-radius: 10px;
     margin-left: 0%;
-    margin-right: 20%;
-    padding-top: 80x;
+    margin-right: 0%;
+
 }
 
 main h2 {
@@ -50,15 +50,9 @@ main h2:hover {
     color: #007bff;
 }
 
-main table,main th, main td{
-    border-spacing: 25px;
-    width: 100%; 
-    border-collapse: separate;
-    border-color: 2px solid black;
-}
-
 .section {
-    margin-top: 70px;
+    width: 100%;
+    margin: 70px 0 0 0;
     background-image:url(Pic/Background1.jpg);
     background-repeat: no-repeat;
     background-size:cover;
@@ -158,15 +152,17 @@ select:hover {
 
 .sidebar {
     position: sticky;
-    top: 71px;
+    top: 70px; 
     width: 250px;
     height: 100vh; 
-    background: #ffffff; 
+    background: #ffffff;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    display: flex;
-    flex-direction: column;
+    
+    display: flex; 
+    flex-direction: column; 
 }
+
 
 .sidebar-content {
     flex-grow: 1;
@@ -294,6 +290,12 @@ select:hover {
     cursor: pointer;
 }
 
+.table-job {
+    width: 75%;
+    border-collapse: separate; 
+    border-spacing: 20px; 
+}
+
 .job-list {
     flex: 1; 
 }
@@ -306,7 +308,7 @@ select:hover {
     border-radius: 15px;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
     align-items: center;
-    gap: 15px;
+    gap: 15%;
     width: 50%; 
 }
 
@@ -345,7 +347,6 @@ select:hover {
 .job-listing a:hover::after {
     transform: scaleX(1);
 }
-
 
 footer {
     background-image: url(Pic/Background2.png);
