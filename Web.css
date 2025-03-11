@@ -41,15 +41,21 @@ main {
 
 }
 
-main h2 {
-    text-decoration: underline;
+.job-listing h2 {
     transition: color 0.3s ease;
 }
 
-main h2:hover {
+.job-listing h2:hover {
     color: #007bff;
     cursor: pointer;
 }
+
+.job-listing h2 > a {
+    font-size: 105%;
+    text-decoration: underline;
+    color: black;
+}
+
 
 .section {
     width: 100%;
@@ -61,7 +67,7 @@ main h2:hover {
 
 .search-section {
     padding: 20px;
-    padding-bottom: 0%;
+    padding-bottom: 0;
     text-align: center;
     margin-bottom: 20px;
     color: white;
@@ -74,20 +80,47 @@ main h2:hover {
     margin-right: 10px;
 }
 
-.search-section input {
+.search-container {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: white;
     width: 50%;
+}
+
+.search-container input {
+    flex: 1;
     padding: 10px;
     font-size: 16px;
-    border: solid 0.1px rgb(211, 211, 211);
-    border-radius: 20px;
+    border: none;
+    border-radius: 20px 0 0 20px;
     outline: none;
 }
+
+.search-btn {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;
+    border-left: solid 1px rgb(211, 211, 211);
+}
+
+.search-btn:hover {
+    background-color: #eaeef1;
+}
+
 
 .center {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 1%;
 }
+
 .search-section2 {
     padding: 10px;
     text-align: center;
@@ -218,9 +251,12 @@ select:hover {
     background: #007bff;
     color: white;
     padding: 11px;
+    margin-top: 10px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
 .filter-btn:hover {
@@ -307,7 +343,6 @@ select:hover {
 
 .table-job {
     width: 75%;
-    border-collapse: separate; 
     border-spacing: 20px; 
 }
 
