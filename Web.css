@@ -186,7 +186,7 @@ select:hover {
 
 .sidebar {
     position: sticky;
-    top: 70px; 
+    top: 62px; 
     width: 250px;
     height: 100vh; 
     background: #ffffff;
@@ -225,6 +225,7 @@ select:hover {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
+    outline: none;
 }
 
 .sidebar select:hover{
@@ -238,13 +239,12 @@ select:hover {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
+    outline: none;
 }
 
 .sidebar input:hover {
-    border: 1px solid #000000;
+    border: 1px solid black;
 }
-
-
 
 .filter-btn {
     width: 100%;
