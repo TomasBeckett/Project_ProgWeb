@@ -34,11 +34,74 @@ body {
     color: black;
 }
 
-main {
+.banner img {
+    width: 100%;
     border-radius: 10px;
-    margin-left: 0%;
-    margin-right: 0%;
+    margin-top: 60px;
+}
 
+.job-info {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+main {
+    width: 50%;
+    margin: 20px auto;
+    margin-top: 86px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+main h2 {
+    text-align: center;
+    color: #000000;
+}
+main form {
+    display: flex;
+    flex-direction: column;
+}
+main label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.form-lamar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 1px rgb(62, 62, 190);
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 250px;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input, select, textarea {
+    padding: 8px;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+input:hover, select:hover {
+    border-color: rgb(211, 211, 211);
+    background-color: #f8f8f8;
 }
 
 .container {
@@ -52,8 +115,8 @@ main {
 }
 
 .back-button {
-    top: 18px;
-    left: 0;
+    top: 11%;
+    margin-left: 24%;
     display: inline-block;
     background-color: white;
     color: #007bff;
@@ -81,87 +144,69 @@ main {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.left-column {
-    flex: 3;
-    border: 2px solid white;
-    background-color: #ffffff;
-    position: relative;
-    padding-top: 10px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
-    align-items: center;
+.button-container {
+    margin-left: 250px;
 }
 
-.right-column {
-    flex: 3;
-    border: 2px solid white;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
-    align-items: center;
-}
-
-.banner {
-    margin-top: 50px;
-    width: 100%;
-    border-radius: 10px;
-}
-
-.logo {
-    width: 100px;
-    margin-top: 10px;
-}
-
-.job-title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.company-name {
-    color: gray;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-.apply-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.apply-btn a{
-    text-decoration: none;
-    color: white;
-}
-
-.apply-btn {
+.button-container button {
     background-color: #00ff15;
+    padding: 10px 20px;
+    font-size: 16px;
     color: white;
+    text-align: center;
     font-weight: bold;
-    font-size: large;
-    padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    text-decoration: none; 
 }
 
-.apply-btn:hover {
+.button-container button:hover {
     background-color: #00cc12; 
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.apply-btn:active {
+.button-.container button:active {
     background-color: #009a0f;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.button-container a{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #007bff;
+    transition: all 0.3s ease;
+    left: 20px; 
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-container a:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-container a:active {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-container p {
+    display: none; 
+    color: rgb(93, 175, 93);
+    margin-left: 6px;
+}
 
 footer {
     background-image: url(/Pic/Other/Background2.png);
@@ -170,6 +215,7 @@ footer {
     padding: 5px 0;
     width: 100%;
 }
+
 
 .button {
     background-color: white;
@@ -192,6 +238,7 @@ footer {
 .button:active {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .modal {
     display: none;
