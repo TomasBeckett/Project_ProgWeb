@@ -55,9 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../Assets/css/pengajuan.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../Assets/css/pengajuan.css?v="<?= time(); ?>>
     <title>Pengajuan Lamaran</title>
 </head>
 <body>
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <tr>
                     <td>
                         <a href="http://127.0.0.1:5500/Lowongan.html#">
-                            <img src="/Pic/Other/OPEN.png" width="150px" alt="Logo Lowongan" />
+                            <img src="../Assets/Pic/Other/OPEN.png" width="150px" alt="Logo Lowongan" />
                         </a>
                     </td>
                     <td>
@@ -90,10 +90,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Login</h2>
-            <form>
-                <input type="text" id="username" name="username" placeholder="Username" />
-                <input type="password" id="password" name="password" placeholder="Password" />
-
+            <form method="post" action="login_process.php">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
                 <button type="submit" class="button">Masuk</button>
                 <p>Belum punya akun? <a href="#">Registrasi</a></p>
             </form>
@@ -102,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </header>
 
 <main>
-    <a href="/Detail/PTLestari.html" class="back-button">← Kembali ke Detail</a>
+    <a href="detail.php?id=<?= $row['id'] ?>" class="back-button">← Kembali ke Detail</a>
     <div class="banner">
         <img src="/Pic/BannerPT/PTLestari.jpg" alt="Banner Lowongan Kerja" />
     </div>
@@ -156,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="button-container">
             <button type="submit" class="submit-button">Kirim Lamaran</button>
-            <a href="/lowongan.html" class="search-button">Cari Lowongan Lain?</a>
+            <a href="home.php" class="search-button">Cari Lowongan Lain?</a>
         </div>
     </form>
 </main>
