@@ -3,10 +3,12 @@ session_start();
 require 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = trim($_POST['name']); // Nama diambil dari form
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm = $_POST['confirm_password'];
 
+    // Validasi password cocok
     if ($password !== $confirm) {
         $_SESSION['login_error'] = "Password tidak cocok.";
         header("Location: home.php");
@@ -25,13 +27,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Hash dan simpan
+    // Hash password dan siapkan foto default
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $email, $hashed_password);
+    $default_photo = 'default.png'; // Letakkan file ini di folder `uploads/`
+
+    // Simpan user baru
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password, photo) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $name, $email, $hashed_password, $default_photo);
 
     if ($stmt->execute()) {
-        $_SESSION['email'] = $email;
+        // Login otomatis setelah registrasi
+        $_SESSION['user'] = [
+            'name' => $name,
+            'email' => $email,
+            'photo' => $default_photo
+        ];
         header("Location: home.php");
         exit;
     } else {

@@ -1,5 +1,6 @@
 <?php
 require 'db.php';
+session_start();
 $query = "SELECT * FROM lowongan ORDER BY id DESC";
 $result = $conn->query($query);
 ?>

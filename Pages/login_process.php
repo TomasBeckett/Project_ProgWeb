@@ -13,8 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user = $result->fetch_assoc()) {
         if (password_verify($password, $user['password'])) {
-            $_SESSION['email'] = $user['email'];
+            $_SESSION['user'] = [
+                'email' => $user['email'],
+                'name' => $user['name'], 
+                'photo' => $user['photo'] ?? 'default.png' 
+            ];
 
+            // Redirect berdasarkan role
             if (str_ends_with($email, '@staff.com')) {
                 header("Location: pengelola.php");
             } else {
@@ -24,12 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['login_error'] = "Password salah.";
             header("Location: " . $_SERVER['HTTP_REFERER']);
-            exit;
         }
     } else {
         $_SESSION['login_error'] = "Email tidak terdaftar.";
         header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit;
     }
 }
 ?>
