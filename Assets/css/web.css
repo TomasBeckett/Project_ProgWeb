@@ -34,6 +34,16 @@ body {
     color: black;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 main {
     border-radius: 10px;
     margin-left: 0%;
