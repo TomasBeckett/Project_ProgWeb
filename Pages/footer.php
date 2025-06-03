@@ -1,3 +1,4 @@
+<?php $userLoggedIn = isset($_SESSION['user']); ?>
 <footer>
     <div class="footer-container">
         <div class="footer-logo">
@@ -98,4 +99,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const applyBtn = document.getElementById("applyBtn");
+    const modal = document.getElementById("loginModal");
+    const userLoggedIn = <?= json_encode($userLoggedIn) ?>;
+    const lowonganId = <?= json_encode($lowongan['id']) ?>;
+
+    applyBtn.addEventListener("click", function () {
+        if (userLoggedIn) {
+            // Redirect ke halaman pengajuan lamaran
+            window.location.href = "pengajuan.php?id=" + lowonganId;
+        } else {
+            // Tampilkan modal login
+            modal.style.display = "block";
+            // Pastikan form login yang muncul
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registerForm").style.display = "none";
+        }
+    });
+});
+</script>
+
 

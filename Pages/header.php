@@ -1,3 +1,4 @@
+<php session_start() ?>
 <header>
         <div class="header">
             <div class="logo">
@@ -21,8 +22,10 @@
                             <?php if (isset($_SESSION['user'])): ?>
                                 <div class="user-info" style="position: relative;">
                                     <div id="profileTrigger" style="cursor: pointer; display: flex; align-items: center;">
-                                        <img src="uploads/<?= htmlspecialchars($_SESSION['user']['photo']) ?>" alt="Foto Profil" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%;">
-                                        <span style="margin-left: 8px;"><?= htmlspecialchars($_SESSION['user']['name']) ?></span>
+                                        <img src="uploads/<?= htmlspecialchars($_SESSION['user']['photo'] ?? 'default.png') ?>" 
+                                             alt="Foto Profil" class="profile-img" 
+                                             style="width: 40px; height: 40px; border-radius: 50%;">
+                                        <span style="margin-left: 8px;"><?= htmlspecialchars($_SESSION['user']['name'] ?? 'Pengguna') ?></span>
                                     </div>
                                     <div id="profileDropdown" style="display: none; position: absolute; top: 45px; right: 0; background: white; border: 1px solid #ccc; box-shadow: 0px 2px 6px rgba(0,0,0,0.2); z-index: 10;">
                                         <form action="logout.php" method="post">
@@ -36,7 +39,7 @@
                         </td>
                     </tr>
                 </table>    
-            </div>
+            </div>   
         
         <div id="loginModal" class="modal">
         <div class="modal-content">
@@ -59,6 +62,8 @@
                 <form method="post" action="login_process.php">
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="password" placeholder="Password" required>
+                    <!-- Redirect ke halaman saat ini -->
+                    <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
                     <button type="submit" class="button">Masuk</button>
                     <p>Belum punya akun? <a href="#" id="toRegister">Registrasi</a></p>
                 </form>
@@ -72,6 +77,7 @@
                     <input type="email" name="email" required placeholder="Email">
                     <input type="password" name="password" required placeholder="Password">
                     <input type="password" name="confirm_password" required placeholder="Konfirmasi Password">
+                    <input type="hidden" name="redirect_to" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
                     <button type="submit" class="button">Daftar</button>
                     <p>Sudah punya akun? <a href="#" id="toLogin">Login</a></p>
                 </form>

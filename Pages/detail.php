@@ -7,12 +7,12 @@
     <title>Detail Lowongan</title>
 </head>
 <body>
-
-    <?php include 'header.php'; ?>
-
     <?php
-    require 'db.php';
     session_start();
+    require 'db.php';
+    include 'header.php';
+    
+    $userLoggedIn = isset($_SESSION['user']);
     $id = $_GET['id'];
     $query = $conn->prepare("SELECT * FROM lowongan WHERE id = ?");
     $query->bind_param("i", $id);
@@ -33,8 +33,8 @@
             <div class="left-column">
                 <a href="home.php" class="back-button">← Kembali ke Lowongan</a>
 
-                <img src="<?= $lowongan['banner_img'] ?>" alt="Banner" class="banner">
-                <img src="<?= $lowongan['logo_img'] ?>" alt="Logo Perusahaan" class="logo">
+                <img src="<?= $lowongan['banner'] ?>" alt="Banner" class="banner">
+                <img src="<?= $lowongan['logo'] ?>" alt="Logo Perusahaan" class="logo">
                 <div class="job-title"><?= htmlspecialchars($lowongan['title']) ?></div>
                 <div class="company-name"><?= htmlspecialchars($lowongan['perusahaan']) ?></div>
                 <p>📍 <?= htmlspecialchars($lowongan['lokasi']) ?></p>
@@ -42,9 +42,12 @@
                 <p>⏳ <?= htmlspecialchars($lowongan['tipe']) ?></p>
                 <p>💰 Rp<?= htmlspecialchars($lowongan['gaji']) ?></p>
                 <div class="buttons">
-                    <button class="apply-btn">
-                        <a href="pengajuan.php?id=<?= $lowongan['id'] ?>">Buat Lamaran</a>
-                    </button>
+                    <?php $userLoggedIn = isset($_SESSION['user']); ?>
+                    <?php if (!$userLoggedIn): ?>
+                        <button class="apply-btn" id="applyBtn">Buat Lamaran</button>
+                    <?php else: ?>
+                        <a href="pengajuan.php?id=<?= $lowongan['id'] ?>" class="apply-btn">Buat Lamaran</a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="right-column">
