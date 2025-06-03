@@ -333,6 +333,32 @@ select:hover {
     background: #0056b3;
 }
 
+.error-message {
+    background-color: #fdd;
+    border: 1px solid red;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.tab-buttons button {
+    padding: 6px 12px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tab-buttons button:hover {
+    background-color: #ccc;
+}
+
+
 .close {
     position: absolute;
     top: 10px;
@@ -399,7 +425,7 @@ select:hover {
 }
 
 footer {
-    background-image: url(Pic/Other/Background2.png);
+    background-image: url(../Pic/Other/Background2.png);
     background-size: cover;
     color: #201f1f;
     padding: 5px 0;
