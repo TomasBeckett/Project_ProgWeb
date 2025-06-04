@@ -258,7 +258,7 @@ if (isset($_GET['pelamar'])) {
         <textarea name="deskripsi" required></textarea>
     </label><br>
     <label>Pertanyaan:<br>
-        <textarea name="pertanyaan" required></textarea>
+        <textarea name="pertanyaan"  id="pertanyaan" required>1. </textarea>
     </label><br>
     <label>Perusahaan:<br>
         <input type="text" name="perusahaan" required>
@@ -402,6 +402,47 @@ document.getElementById('gaji_max').addEventListener('input', function () {
     formatRupiah(this);
 });
 </script>
+
+<script>
+document.getElementById("pertanyaan").addEventListener("keydown", function(e) {
+    const textarea = this;
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+
+        const lines = textarea.value.split("\n");
+        const lastLine = lines[lines.length - 1];
+        const match = lastLine.match(/^(\d+)\.\s/);
+        let nextNumber = 1;
+
+        if (match) {
+            nextNumber = parseInt(match[1]) + 1;
+        } else {
+            // Jika baris sebelumnya tidak ada angka, cari angka dari baris sebelumnya
+            for (let i = lines.length - 2; i >= 0; i--) {
+                const m = lines[i].match(/^(\d+)\.\s/);
+                if (m) {
+                    nextNumber = parseInt(m[1]) + 1;
+                    break;
+                }
+            }
+        }
+
+        textarea.value += `\n${nextNumber}. `;
+    }
+});
+
+// Bersihkan angka sebelum form disubmit
+document.getElementById("formPertanyaan").addEventListener("submit", function(e) {
+    const textarea = document.getElementById("pertanyaan");
+    const cleaned = textarea.value
+        .split("\n")
+        .map(line => line.replace(/^\d+\.\s*/, ''))
+        .join("\n");
+    textarea.value = cleaned;
+});
+</script>
+
 
 </html>
 

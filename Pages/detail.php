@@ -60,7 +60,7 @@
                 <h2>Pertanyaan dari Perusahaan</h2>
                 <ol>
                     <?php foreach ($pertanyaan as $q): ?>
-                        <li><p><?= htmlspecialchars($q) ?></p></li>
+                        <li><p><?= htmlspecialchars(trim($q)) ?></p></li>
                     <?php endforeach; ?>
                 </ol>
             </div>
