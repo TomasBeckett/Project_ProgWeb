@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $userId !== null) {
 
 // Ambil data lowongan
 if ($id) {
-    $stmtLowongan = $conn->prepare("SELECT title, perusahaan FROM lowongan WHERE id = ?");
+    $stmtLowongan = $conn->prepare("SELECT title, perusahaan, banner FROM lowongan WHERE id = ?");
     $stmtLowongan->bind_param("i", $id);
     $stmtLowongan->execute();
     $resLowongan = $stmtLowongan->get_result();
@@ -108,7 +108,7 @@ if ($id) {
 <main>
     <a href="detail.php?id=<?= htmlspecialchars($id) ?>" class="back-button">← Kembali ke Detail</a>
     <div class="banner">
-        <img src="/Pic/BannerPT/PTLestari.jpg" alt="Banner Lowongan Kerja" />
+        <img src="<?= htmlspecialchars($lowongan['banner']) ?>" alt="Banner" class="banner">
     </div>
     <div class="job-info">
         <h2><?= htmlspecialchars($lowongan['title']) ?></h2>

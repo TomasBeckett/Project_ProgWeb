@@ -17,7 +17,7 @@ require 'db.php';
 
 <main>
     <!-- Form Pencarian -->
-    <form id="search-form" onsubmit="return false;"> <!-- prevent default submit -->
+    <form id="search-form" onsubmit="return false;" class="section"> <!-- prevent default submit -->
         <div class="search-section">
             <label for="search">Cari Lowongan:</label>
             <div class="search-container">
