@@ -45,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Format gaji min dan max, hapus titik ribuan, cast ke int
         $gaji_min = (int) str_replace('.', '', $_POST['gaji_min'] ?? '0');
         $gaji_max = (int) str_replace('.', '', $_POST['gaji_max'] ?? '0');
-        $gaji = $gaji_min . " - " . $gaji_max;
-
+        $gaji = number_format($gaji_min, 0, ',', '.') . " - " . number_format($gaji_max, 0, ',', '.');
+            
         // Upload logo dan banner
         $logoPath = uploadFile('logo', $logoDir);
         $bannerPath = uploadFile('banner', $bannerDir);
@@ -58,37 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt = $conn->prepare("INSERT INTO lowongan (perusahaan_id, title, bidang, tipe, gaji, lokasi, deskripsi, pertanyaan, perusahaan, logo, banner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("issssssssss", $companyId, $title, $bidang, $tipe, $gaji, $lokasi, $deskripsi, $pertanyaan, $perusahaan, $logoPath, $bannerPath);
-        $stmt->execute();
-        $stmt->close();
-
-        header("Location: pengelola.php");
-        exit;
-    }
-
-    // EDIT LOWONGAN
-    if (isset($_POST['edit_lowongan'])) {
-        $id = (int)($_POST['id'] ?? 0);
-        if ($id <= 0) die("ID lowongan tidak valid.");
-
-        // Cek kepemilikan lowongan
-        $stmt = $conn->prepare("SELECT perusahaan_id FROM lowongan WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($pemilik);
-        $stmt->fetch();
-        $stmt->close();
-
-        if ($pemilik != $companyId) die("Akses ditolak.");
-
-        $title = $_POST['title'] ?? '';
-        $bidang = $_POST['bidang'] ?? '';
-        $tipe = $_POST['tipe'] ?? '';
-        $gaji = $_POST['gaji'] ?? '';
-        $lokasi = $_POST['lokasi'] ?? '';
-        $deskripsi = $_POST['deskripsi'] ?? '';
-
-        $stmt = $conn->prepare("UPDATE lowongan SET title=?, bidang=?, tipe=?, gaji=?, lokasi=?, deskripsi=? WHERE id=?");
-        $stmt->bind_param("ssssssi", $title, $bidang, $tipe, $gaji, $lokasi, $deskripsi, $id);
         $stmt->execute();
         $stmt->close();
 
@@ -223,7 +192,7 @@ if (isset($_GET['pelamar'])) {
                 <td><?= htmlspecialchars($lowongan['lokasi']) ?></td>
                 <td>
                     <a href="pengelola.php?detail=<?= $lowongan['id'] ?>">Detail</a> |
-                    <a href="pengelola.php?edit=<?= $lowongan['id'] ?>">Edit</a> |
+                    <a href="addlowongan.php?id=<?= $lowongan['id'] ?>">Edit</a>
                     <form action="pengelola.php" method="post" class="inline" onsubmit="return confirm('Hapus lowongan ini?');">
                         <input type="hidden" name="id" value="<?= $lowongan['id'] ?>">
                         <button type="submit" name="delete_lowongan" class="btn btn-danger">Hapus</button>
@@ -234,55 +203,35 @@ if (isset($_GET['pelamar'])) {
     </tbody>
 </table>
 
-<h2>Tambah Lowongan Baru</h2>
-<form action="pengelola.php" method="post" enctype="multipart/form-data">
-    <label>Judul Lowongan:<br>
-        <input type="text" name="title" required>
-    </label><br>
-    <label>Bidang:<br>
-        <input type="text" name="bidang" required>
-    </label><br>
-    <label>Jenis Pekerjaan:<br>
-        <input type="text" name="tipe" required>
-    </label><br>
-    <label>Gaji Minimum:<br>
-        <input type="text" name="gaji_min" pattern="[0-9\.]+" title="Masukkan angka, gunakan titik untuk ribuan" required>
-    </label><br>
-    <label>Gaji Maksimum:<br>
-        <input type="text" name="gaji_max" pattern="[0-9\.]+" title="Masukkan angka, gunakan titik untuk ribuan" required>
-    </label><br>
-    <label>Lokasi:<br>
-        <input type="text" name="lokasi" required>
-    </label><br>
-    <label>Deskripsi:<br>
-        <textarea name="deskripsi" required></textarea>
-    </label><br>
-    <label>Pertanyaan:<br>
-        <textarea name="pertanyaan"  id="pertanyaan" required>1. </textarea>
-    </label><br>
-    <label>Perusahaan:<br>
-        <input type="text" name="perusahaan" required>
-    </label><br>
-    <label>Logo:<br>
-        <input type="file" name="logo" accept="image/*" required>
-    </label><br>
-    <label>Banner:<br>
-        <input type="file" name="banner" accept="image/*">
-    </label><br>
-    <button type="submit" name="add_lowongan" class="btn">Tambah</button>
-</form>
+<a href="addlowongan.php" class="btn">+ Tambah Lowongan Baru</a>
 
 <?php elseif ($detailLowongan): ?>
 
 <h2>Detail Lowongan: <?= htmlspecialchars($detailLowongan['title']) ?></h2>
-
+<p><strong>Perusahaan:</strong> <?= htmlspecialchars($detailLowongan['perusahaan']) ?></p>
 <p><strong>Bidang:</strong> <?= htmlspecialchars($detailLowongan['bidang']) ?></p>
 <p><strong>Jenis:</strong> <?= htmlspecialchars($detailLowongan['tipe']) ?></p>
-<p><strong>Gaji:</strong> <?= htmlspecialchars($detailLowongan['gaji']) ?></p>
+<?php
+$gajiFormatted = '';
+if (strpos($detailLowongan['gaji'], '-') !== false) {
+    list($min, $max) = explode('-', $detailLowongan['gaji']);
+    $gajiFormatted = 'Rp ' . number_format((float)str_replace(['.', ','], '', $min), 0, ',', '.') . ' - Rp ' . number_format((float)str_replace(['.', ','], '', $max), 0, ',', '.');
+} else {
+    $gajiFormatted = 'Rp ' . number_format((float)str_replace(['.', ','], '', $detailLowongan['gaji']), 0, ',', '.');
+}
+?>
+<p><strong>Gaji:</strong> <?= $gajiFormatted ?></p>
 <p><strong>Lokasi:</strong> <?= htmlspecialchars($detailLowongan['lokasi']) ?></p>
 <p><strong>Deskripsi:</strong> <?= nl2br(htmlspecialchars($detailLowongan['deskripsi'])) ?></p>
-<p><strong>Pertanyaan:</strong> <?= nl2br(htmlspecialchars($detailLowongan['pertanyaan'])) ?></p>
-<p><strong>Perusahaan:</strong> <?= htmlspecialchars($detailLowongan['perusahaan']) ?></p>
+<?php
+$pertanyaanList = explode("\n", $detailLowongan['pertanyaan']);
+?>
+<p><strong>Pertanyaan:</strong></p>
+<ol>
+    <?php foreach ($pertanyaanList as $p): ?>
+        <li><?= htmlspecialchars($p) ?></li>
+    <?php endforeach; ?>
+</ol>
 <p><strong>Logo:</strong><br><img src="../<?= htmlspecialchars($detailLowongan['logo']) ?>" alt="Logo" width="100"></p>
 <?php if ($detailLowongan['banner']): ?>
 <p><strong>Banner:</strong><br><img src="../<?= htmlspecialchars($detailLowongan['banner']) ?>" alt="Banner" width="200"></p>
@@ -344,105 +293,83 @@ $stmt->close();
 if (!$editLowongan) {
     echo "<p>Lowongan tidak ditemukan atau akses ditolak.</p>";
 } else {
+
+$gaji_min = '';
+$gaji_max = '';
+if (strpos($editLowongan['gaji'], '-') !== false) {
+    list($min, $max) = explode('-', $editLowongan['gaji']);
+    $gaji_min = trim(str_replace(['Rp', '.', ','], '', $min));
+    $gaji_max = trim(str_replace(['Rp', '.', ','], '', $max));
+}
 ?>
 
 <h2>Edit Lowongan: <?= htmlspecialchars($editLowongan['title']) ?></h2>
-<form action="pengelola.php" method="post">
+<form action="pengelola.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $editLowongan['id'] ?>">
+
     <label>Judul Lowongan:<br>
         <input type="text" name="title" value="<?= htmlspecialchars($editLowongan['title']) ?>" required>
     </label><br>
+
     <label>Bidang:<br>
         <input type="text" name="bidang" value="<?= htmlspecialchars($editLowongan['bidang']) ?>" required>
     </label><br>
+
     <label>Jenis Pekerjaan:<br>
         <input type="text" name="tipe" value="<?= htmlspecialchars($editLowongan['tipe']) ?>" required>
     </label><br>
-    <label>Gaji:<br>
-        <input type="text" name="gaji" value="<?= htmlspecialchars($editLowongan['gaji']) ?>" required>
+
+    <label>Gaji Minimal:<br>
+        <input type="text" name="gaji_min" value="<?= htmlspecialchars($gaji_min) ?>" required>
     </label><br>
+
+    <label>Gaji Maksimal:<br>
+        <input type="text" name="gaji_max" value="<?= htmlspecialchars($gaji_max) ?>" required>
+    </label><br>
+
     <label>Lokasi:<br>
         <input type="text" name="lokasi" value="<?= htmlspecialchars($editLowongan['lokasi']) ?>" required>
     </label><br>
+
+    <label>Perusahaan:<br>
+        <input type="text" name="perusahaan" value="<?= htmlspecialchars($editLowongan['perusahaan']) ?>" required>
+    </label><br>
+
     <label>Deskripsi:<br>
         <textarea name="deskripsi" required><?= htmlspecialchars($editLowongan['deskripsi']) ?></textarea>
     </label><br>
+
+    <label>Pertanyaan (satu per baris):<br>
+        <textarea name="pertanyaan"><?= htmlspecialchars($editLowongan['pertanyaan']) ?></textarea>
+    </label><br>
+
+    <label>Logo Saat Ini:<br>
+        <img src="../<?= htmlspecialchars($editLowongan['logo']) ?>" alt="Logo" width="100"><br>
+        <input type="file" name="logo" accept="image/*">
+        <small>Abaikan jika tidak ingin ganti logo.</small>
+    </label><br>
+
+    <label>Banner Saat Ini:<br>
+        <?php if ($editLowongan['banner']): ?>
+            <img src="../<?= htmlspecialchars($editLowongan['banner']) ?>" alt="Banner" width="200"><br>
+        <?php else: ?>
+            <em>Tidak ada banner</em><br>
+        <?php endif; ?>
+        <input type="file" name="banner" accept="image/*">
+        <small>Abaikan jika tidak ingin ganti banner.</small>
+    </label><br>
+
     <button type="submit" name="edit_lowongan" class="btn">Simpan Perubahan</button>
 </form>
+
 <p><a href="pengelola.php">Batal</a></p>
+
 
 <?php } endif; ?>
 
 <?php include 'footer.php'; ?>
 
 </body>
-
-<script>
-document.getElementById('gaji_min').addEventListener('change', function () {
-    let val = parseInt(this.value);
-    if (val < 0) this.value = 0;
-});
-
-document.getElementById('gaji_max').addEventListener('change', function () {
-    let val = parseInt(this.value);
-    if (val < 0) this.value = 0;
-});
-</script>
-
-<script>
-function formatRupiah(input) {
-    let angka = input.value.replace(/\D/g, '');
-    input.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-document.getElementById('gaji_min').addEventListener('input', function () {
-    formatRupiah(this);
-});
-document.getElementById('gaji_max').addEventListener('input', function () {
-    formatRupiah(this);
-});
-</script>
-
-<script>
-document.getElementById("pertanyaan").addEventListener("keydown", function(e) {
-    const textarea = this;
-
-    if (e.key === "Enter") {
-        e.preventDefault();
-
-        const lines = textarea.value.split("\n");
-        const lastLine = lines[lines.length - 1];
-        const match = lastLine.match(/^(\d+)\.\s/);
-        let nextNumber = 1;
-
-        if (match) {
-            nextNumber = parseInt(match[1]) + 1;
-        } else {
-            // Jika baris sebelumnya tidak ada angka, cari angka dari baris sebelumnya
-            for (let i = lines.length - 2; i >= 0; i--) {
-                const m = lines[i].match(/^(\d+)\.\s/);
-                if (m) {
-                    nextNumber = parseInt(m[1]) + 1;
-                    break;
-                }
-            }
-        }
-
-        textarea.value += `\n${nextNumber}. `;
-    }
-});
-
-// Bersihkan angka sebelum form disubmit
-document.getElementById("formPertanyaan").addEventListener("submit", function(e) {
-    const textarea = document.getElementById("pertanyaan");
-    const cleaned = textarea.value
-        .split("\n")
-        .map(line => line.replace(/^\d+\.\s*/, ''))
-        .join("\n");
-    textarea.value = cleaned;
-});
-</script>
-
 
 </html>
 

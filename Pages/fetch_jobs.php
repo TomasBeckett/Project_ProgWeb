@@ -84,7 +84,7 @@ while ($row = $result->fetch_assoc()) {
         if ($count % 2 == 0) echo "<tr>";
         ?>
         <td class="job-listing">
-            <img src="<?= htmlspecialchars($row['logo']) ?>" alt="Logo Perusahaan">
+            <img src="uploads/logo/<?= htmlspecialchars($row['logo']) ?>" alt="Logo Perusahaan">
             <div class="content">
                 <h2><a href="detail.php?id=<?= (int)$row['id'] ?>"><?= htmlspecialchars($row['title']) ?></a></h2>
                 <p><strong>Perusahaan:</strong> <?= htmlspecialchars($row['perusahaan']) ?></p>

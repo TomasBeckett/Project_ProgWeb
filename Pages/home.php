@@ -99,7 +99,7 @@ require 'db.php';
         </div>
 
         <div class="job-list" id="job-results">
-            <!-- Hasil lowongan akan muncul di sini via AJAX -->
+            <!-- Hasil lowongan muncul via AJAX -->
             <p style="text-align:center;">Silakan masukkan filter pencarian.</p>
         </div>
     </div>
@@ -125,16 +125,16 @@ function fetchLowongan() {
 
     const gaji = document.getElementById('gaji').value.trim();
     if (gaji) {
-        // Ambil angka minimal dari rentang gaji (misal 5.000.000 - 10.000.000 => 5000000)
         const gajiParts = gaji.replace(/\./g, '').split("-");
-        if (gajiParts.length >= 1) {
+        if (gajiParts.length === 2) {
             const minSalary = parseInt(gajiParts[0]);
-            if (!isNaN(minSalary)) {
-                formData.set('salary_range', minSalary);
+            const maxSalary = parseInt(gajiParts[1]);
+            if (!isNaN(minSalary) && !isNaN(maxSalary)) {
+                formData.set('salary_range', `${minSalary}-${maxSalary}`);
             }
         }
     }
-
+    
     const params = new URLSearchParams(formData).toString();
 
     fetch('fetch_jobs.php?' + params)
