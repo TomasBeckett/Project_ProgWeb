@@ -20,16 +20,13 @@
                     <tr>
                         <td>
                             <?php if (isset($_SESSION['user'])): ?>
-                                <div class="user-info" style="position: relative;">
-                                    <div id="profileTrigger" style="cursor: pointer; display: flex; align-items: center;">
-                                        <img src="uploads/<?= htmlspecialchars($_SESSION['user']['photo'] ?? 'default.png') ?>" 
-                                             alt="Foto Profil" class="profile-img" 
-                                             style="width: 40px; height: 40px; border-radius: 50%;">
-                                        <span style="margin-left: 8px;"><?= htmlspecialchars($_SESSION['user']['name'] ?? 'Pengguna') ?></span>
+                                <div class="user-info" style="position: relative; display: inline-block; font-family: sans-serif;">
+                                    <div id="profileTrigger" style="cursor: pointer; margin-right:20px; padding: 8px 12px; background-color: #f0f0f0; border-radius: 6px; transition: background 0.2s;">
+                                        <span><?= htmlspecialchars($_SESSION['user']['name'] ?? 'Pengguna') ?></span>
                                     </div>
-                                    <div id="profileDropdown" style="display: none; position: absolute; top: 45px; right: 0; background: white; border: 1px solid #ccc; box-shadow: 0px 2px 6px rgba(0,0,0,0.2); z-index: 10;">
-                                        <form action="logout.php" method="post">
-                                            <button type="submit" style="padding: 10px 20px; border: none; background: none; width: 100%; text-align: left;">Logout</button>
+                                    <div id="profileDropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); min-width: 120px; z-index: 10;">
+                                        <form action="logout.php" method="post" style="margin: 0;">
+                                            <button type="submit" style="padding: 10px 16px; width: 100%; background: none; border: none; text-align: left; font-size: 14px; cursor: pointer;">Logout</button>
                                         </form>
                                     </div>
                                 </div>

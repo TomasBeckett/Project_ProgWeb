@@ -139,29 +139,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8" />
     <title><?= $editMode ? "Edit Lowongan" : "Tambah Lowongan" ?></title>
-    <link rel="stylesheet" href="../Assets/css/web.css?v=<?= time(); ?>" />
+    <link rel="stylesheet" href="../Assets/css/pengajuan.css?v=<?= time(); ?>" />
 </head>
 <body>
 
 <?php include 'header.php'; ?>
 
+<main>
     <h2><?= $editMode ? "Edit Lowongan" : "Tambah Lowongan Baru" ?></h2>
-    <p><a href="pengelola.php">Kembali ke daftar lowongan</a></p>
+    <p><a href="pengelola.php" class="back-button">Kembali ke daftar lowongan</a></p>
 
-    <form id="formPertanyaan" action="addlowongan.php" method="post" enctype="multipart/form-data">
+    <form id="formPertanyaan" action="addlowongan.php" method="post" enctype="multipart/form-data" class="form-lamar">
         <?php if ($editMode): ?>
             <input type="hidden" name="id" value="<?= $editLowongan['id'] ?>">
         <?php endif; ?>
 
-        <label>Judul Lowongan:<br>
+        <div class="form-group">
+            <label>Judul Lowongan :</label> 
             <input type="text" name="title" value="<?= htmlspecialchars($title) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Bidang:<br>
+        <div class="form-group">
+            <label>Bidang :</label>
             <input type="text" name="bidang" value="<?= htmlspecialchars($bidang) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Jenis Pekerjaan:<br>
+        <div class="form-group">
+            <label>Jenis Pekerjaan :</label>
             <select name="tipe" required>
                 <option value="">-- Pilih Jenis Pekerjaan --</option>
                 <?php
@@ -172,51 +176,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 ?>
             </select>
-        </label><br>
+        </div>
 
-        <label>Gaji Minimum:<br>
+        <div class="form-group">
+            <label>Gaji Minimum :</label>
             <input type="text" id="gaji_min" name="gaji_min" pattern="[0-9\.]+" title="Masukkan angka, gunakan titik untuk ribuan" value="<?= htmlspecialchars($gaji_min) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Gaji Maksimum:<br>
+        <div class="form-group">
+            <label>Gaji Maksimum :</label>
             <input type="text" id="gaji_max" name="gaji_max" pattern="[0-9\.]+" title="Masukkan angka, gunakan titik untuk ribuan" value="<?= htmlspecialchars($gaji_max) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Lokasi:<br>
+        <div class="form-group">
+            <label>Lokasi :</label>
             <input type="text" name="lokasi" value="<?= htmlspecialchars($lokasi) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Deskripsi:<br>
+        <div class="form-group">
+            <label>Deskripsi :</label>
             <textarea name="deskripsi" required><?= htmlspecialchars($deskripsi) ?></textarea>
-        </label><br>
+        </div>
 
-        <label>Pertanyaan:<br>
+        <div class="form-group">
+            <label>Pertanyaan :</label>
             <textarea name="pertanyaan" id="pertanyaan" required><?= htmlspecialchars($pertanyaan ?: "1. ") ?></textarea>
-        </label><br>
+        </div>
 
-        <label>Perusahaan:<br>
+        <div class="form-group">
+            <label>Perusahaan :</label>
             <input type="text" name="perusahaan" value="<?= htmlspecialchars($perusahaan) ?>" required>
-        </label><br>
+        </div>
 
-        <label>Logo:<br>
+        <div class="form-group">
+            <label>Logo :</label>
             <input type="file" name="logo" accept="image/*" <?= $editMode ? '' : 'required' ?>>
-            <?php if ($editMode && $logo): ?>
-                <br><small>Logo saat ini: <?= htmlspecialchars($logo) ?></small>
-            <?php endif; ?>
-        </label><br>
+                <?php if ($editMode && $logo): ?>
+                    <br><small> Logo saat ini: <?= htmlspecialchars($logo) ?></small>
+                <?php endif; ?>
+        </div>
 
-        <label>Banner:<br>
+        <div class="form-group">
+            <label>Banner :</label>
             <input type="file" name="banner" accept="image/*">
-            <?php if ($editMode && $banner): ?>
-                <br><small>Banner saat ini: <?= htmlspecialchars($banner) ?></small>
-            <?php endif; ?>
-        </label><br>
+                <?php if ($editMode && $banner): ?>
+                    <br><small> Banner saat ini: <?= htmlspecialchars($banner) ?></small>
+                <?php endif; ?>
+        </div>
 
-        <button type="submit" name="<?= $editMode ? 'edit_lowongan' : 'add_lowongan' ?>" class="btn">
-            <?= $editMode ? 'Simpan Perubahan' : 'Tambah' ?>
-        </button>
+        <div class="button-container" style="margin-left: 0; margin-top: 20;" >
+            <button type="submit" name="<?= $editMode ? 'edit_lowongan' : 'add_lowongan' ?>" class="submit-button">
+                <?= $editMode ? 'Simpan Perubahan' : 'Tambah' ?>
+            </button>
+        </div>
     </form>
-
+</main>
+    
+                
 <script>
 document.getElementById('gaji_min').addEventListener('change', function () {
     let val = parseInt(this.value.replace(/\./g, ''));
