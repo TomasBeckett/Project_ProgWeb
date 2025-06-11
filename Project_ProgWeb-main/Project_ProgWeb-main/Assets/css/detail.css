@@ -274,14 +274,45 @@ footer {
 }
 
 .footer-links a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
+}
+.footer-links a:hover{
+    color: #eaeef1;
+    transform: translateY(-3px);
+}
+
+.footer-social {
+    
+    padding: 30px 20px;
+    text-align: center;
+    color: #fff;
+    border-top: 3px solid #000000;
+}
+
+.footer-social h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000000;
 }
 
 .footer-social a {
-    margin: 5px;
-    color: #fff;
-    font-size: 20px;
+    display: inline-block;
+    margin: 8px 12px;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a i {
+    margin-right: 8px;
+    color: #000000;
+}
+
+.footer-social a:hover {
+    color: #eee;
+    transform: translateY(-3px);
 }
 
 .footer-bottom {
